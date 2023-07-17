@@ -7,7 +7,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Transform target;
-    public float speed = 10f;
+    float speed = 20f;
+    public GameObject impactEffect;
     public void fire(Transform target)
     {
         this.target = target;
@@ -43,6 +44,9 @@ public class Bullet : MonoBehaviour
     private void HitTarget()
     {
         Destroy(gameObject);
+        GameObject impact = Instantiate(impactEffect, transform.position, transform.rotation);
+        Destroy(impact,2f);
+        Destroy(target.gameObject);
         Debug.Log("HIT"); 
     }
 }
