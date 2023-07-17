@@ -7,7 +7,9 @@ public class BuildManager : MonoBehaviour
     
     public static BuildManager Instance { get; private set; }
     public GameObject standardTurret;
+    public GameObject MissileTurret;
     private GameObject turretToBuild;
+
     private void Awake()
     {
         if (Instance != null)
@@ -18,19 +20,13 @@ public class BuildManager : MonoBehaviour
         Instance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        turretToBuild = standardTurret;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public GameObject GetTurretToBuild()
     {
         return turretToBuild;
+    }
+    public void setTurretToBuild(GameObject turretToBuild)
+    {
+        this.turretToBuild = turretToBuild;
     }
 }

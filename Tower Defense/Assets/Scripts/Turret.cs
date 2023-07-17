@@ -7,7 +7,7 @@ public class Turret : MonoBehaviour
 {
     public Transform partToRotate;
     private Transform currTarget = null;
-    public GameObject bullet;
+    public GameObject Ammo;
     public Transform firePoint;
 
     [Header("Attributes")]
@@ -67,7 +67,7 @@ public class Turret : MonoBehaviour
     private void Shoot()
     {
         Debug.Log("shoot");
-        GameObject currBullet = (GameObject)Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+        GameObject currBullet = (GameObject)Instantiate(Ammo, firePoint.transform.position, firePoint.transform.rotation);
         Bullet bulletScript =  currBullet.GetComponent<Bullet>();
         if(bulletScript!=null) {
             bulletScript.fire(currTarget);
