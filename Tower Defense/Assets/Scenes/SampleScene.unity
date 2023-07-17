@@ -12890,8 +12890,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1532242106}
   - component: {fileID: 1532242105}
+  - component: {fileID: 1532242108}
+  - component: {fileID: 1532242107}
   m_Layer: 0
-  m_Name: WaveSpawner
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12928,6 +12930,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1532242107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532242104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f59e72d775234c4e8fc5181465e6197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standardTurret: {fileID: 2252976563206168872, guid: 17733e364e5af2447a62960ef607b3ed, type: 3}
+--- !u!114 &1532242108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532242104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a998c084021e146a5ec4f172676ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1541166159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18071,7 +18098,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2252976563206168872, guid: 17733e364e5af2447a62960ef607b3ed, type: 3}
       propertyPath: m_Name
-      value: Turret
+      value: StandardTurret
       objectReference: {fileID: 0}
     - target: {fileID: 2252976563206168872, guid: 17733e364e5af2447a62960ef607b3ed, type: 3}
       propertyPath: m_TagString
