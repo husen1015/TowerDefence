@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,16 @@ public class Turret : MonoBehaviour
 {
     public Transform partToRotate;
     private Transform currTarget = null;
+    public GameObject bullet;
+    public Transform firePoint;
+
+    [Header("Attributes")]
+    public float fireRate = 1f;
     private float range = 15f;
     private float rotationSpeed = 8f;
+    private float fireCountDown = 0f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,13 +52,36 @@ public class Turret : MonoBehaviour
     {
         if(currTarget != null)
         {
-            //rotate the turret to point at the closest target
-            Vector3 dir = (transform.position - currTarget.position).normalized;
-            Quaternion lookRotatation = Quaternion.LookRotation(dir);
-            //using quaternion.lerp to make a smooth transition when retargeting instead of snapping to a new target
-            Vector3 eulerRotation = Quaternion.Lerp(partToRotate.rotation, lookRotatation, Time.deltaTime * rotationSpeed).eulerAngles;
-            partToRotate.rotation = Quaternion.Euler(0f, eulerRotation.y, 0f);
+            LockOnTarget();
+            //should shoot
+            if (fireCountDown <= 0)
+            {
+                Shoot();
+                fireCountDown = 1f / fireRate;
+            }
+            fireCountDown -= Time.deltaTime;
         }
+
+    }
+
+    private void Shoot()
+    {
+        Debug.Log("shoot");
+        GameObject currBullet = (GameObject)Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+        Bullet bulletScript =  currBullet.GetComponent<Bullet>();
+        if(bulletScript!=null) {
+            bulletScript.fire(currTarget);
+        }
+    }
+
+    void LockOnTarget()
+    {
+        //rotate the turret to point at the closest target
+        Vector3 dir = (transform.position - currTarget.position).normalized;
+        Quaternion lookRotatation = Quaternion.LookRotation(dir);
+        //using quaternion.lerp to make a smooth transition when retargeting instead of snapping to a new target
+        Vector3 eulerRotation = Quaternion.Lerp(partToRotate.rotation, lookRotatation, Time.deltaTime * rotationSpeed).eulerAngles;
+        partToRotate.rotation = Quaternion.Euler(0f, eulerRotation.y, 0f);
     }
     //draw a gizmos to visualize turret range in the scene view
     private void OnDrawGizmosSelected()
