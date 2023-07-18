@@ -5,20 +5,26 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    public Transform partToRotate;
     private Transform currTarget = null;
-    public GameObject Bullet;
-    public Transform firePoint;
     [Header("Attributes")]
-    public float fireRate = 1f;
     private float range = 15f;
+    public Transform partToRotate;
+    public Transform firePoint;
+
+    [Header("Use Bullets(default)")]
+    public GameObject Bullet;
+    public float fireRate = 1f;
     private float rotationSpeed = 8f;
     private float fireCountDown = 0f;
 
+    [Header("Use Laser")]
+    public bool useLaser = false;
+    public LineRenderer lineRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
+        lineRenderer= GetComponent<LineRenderer>();//can be null
         InvokeRepeating("UpdateTarget", 0f, 0.5f); //look for a target every 2 seconds to avoid performance issues
 
     }
@@ -54,12 +60,26 @@ public class Turret : MonoBehaviour
         {
             LockOnTarget();
             //should shoot
-            if (fireCountDown <= 0)
+            if (!useLaser)
             {
-                Shoot();
-                fireCountDown = 1f / fireRate;
+                if (fireCountDown <= 0)
+                {
+                    Shoot();
+                    fireCountDown = 1f / fireRate;
+                }
+                fireCountDown -= Time.deltaTime;
+            }else
+            {
+                lineRenderer.enabled = true;
+                ShootLaser();
             }
-            fireCountDown -= Time.deltaTime;
+        }
+        else
+        {
+            if(useLaser && lineRenderer != null) 
+            {
+                lineRenderer.enabled = false;
+            }
         }
 
     }
@@ -74,7 +94,11 @@ public class Turret : MonoBehaviour
             bulletScript.fire(currTarget);
         }
     }
-
+    private void ShootLaser()
+    {
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, currTarget.position);
+    }
     void LockOnTarget()
     {
         //rotate the turret to point at the closest target

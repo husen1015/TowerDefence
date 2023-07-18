@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public int health = 4;
     public float speed = 10f;
     public int worth = 25;
+    public GameObject deathEffect;
 
     private Transform currTarget;
     private int wayPointIndex = 0;
@@ -41,6 +42,9 @@ public class Enemy : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
+            GameObject effect = Instantiate(deathEffect, this.transform.position, Quaternion.identity);
+            Destroy(effect, 3f);
+
             gameManager.incrementBalance(worth);
         }
     }
