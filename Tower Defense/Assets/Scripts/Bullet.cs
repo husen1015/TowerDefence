@@ -7,7 +7,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Transform target;
-    float speed = 20f;
+    public float speed = 20f;
     public GameObject impactEffect;
     public void fire(Transform target)
     {
@@ -29,6 +29,7 @@ public class Bullet : MonoBehaviour
             return;
         }
         Vector3 dir = target.position - transform.position; //distance between target and bullet
+        transform.LookAt(target);
         float distanceOverFrame = speed * Time.deltaTime; // distance covered in the curr frame
         if(dir.magnitude <= distanceOverFrame ) // if hit
         {
@@ -45,7 +46,7 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject);
         GameObject impact = Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(impact,2f);
+        Destroy(impact,3f);
         Destroy(target.gameObject);
         Debug.Log("HIT"); 
     }
