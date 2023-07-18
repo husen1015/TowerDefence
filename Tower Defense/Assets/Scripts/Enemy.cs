@@ -5,15 +5,21 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Attributes")]
+    public int health = 4;
     public float speed = 10f;
+    public int worth = 25;
+
     private Transform currTarget;
     private int wayPointIndex = 0;
     private int waypointsNum;
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
         currTarget = Waypoints.waypointsArr[0];
         waypointsNum = Waypoints.waypointsArr.Length;
+        gameManager = GameManager.Instance;
     }
 
     // Update is called once per frame
@@ -27,7 +33,17 @@ public class Enemy : MonoBehaviour
             GetNextWaypoint();
         }
     }
-
+    public void takeDamage(int amount)
+    {
+        this.health -= amount;
+        Debug.Log(this.health);
+        //destroy enemy and reward money
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+            gameManager.incrementBalance(worth);
+        }
+    }
     private void GetNextWaypoint()
     {
         if (wayPointIndex < waypointsNum - 1) 
@@ -37,7 +53,8 @@ public class Enemy : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            //TODO - end game OR remove a life 
+            gameManager.incrementLives(-1);
+            
         }
     }
 }

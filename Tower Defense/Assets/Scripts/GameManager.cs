@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static int Balance;
     public int startBalance = 400;
+    int livesLeft;
+    public int startingLives = 5;
     public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI livesText;
+
 
     public static GameManager Instance { get; private set; }
 
@@ -24,9 +29,11 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        livesLeft = startingLives;
         buildManager = BuildManager.Instance;
         Balance = startBalance;
         moneyText.text = $"{startBalance.ToString()}$";
+        livesText.text = $"Lives Left: {livesLeft}";
     }
     private void Update()
     {
@@ -39,5 +46,22 @@ public class GameManager : MonoBehaviour
     {
         Balance += balance;
         moneyText.text = $"{Balance.ToString()}$";
+    }
+    public void incrementLives(int livesNum)
+    {
+        livesLeft += livesNum;
+        if (!(livesLeft < 0))
+        {
+            livesText.text = $"Lives Left: {livesLeft}";
+        }
+        else
+        {
+            //end game here
+            endGame();
+        }
+    }
+    private void endGame()
+    {
+        SceneManager.LoadScene(1);
     }
 }

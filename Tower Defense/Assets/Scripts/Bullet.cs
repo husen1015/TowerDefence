@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     private Transform target;
     public float speed = 20f;
     public GameObject impactEffect;
+    public int damage;
     public void fire(Transform target)
     {
         this.target = target;
@@ -44,10 +45,10 @@ public class Bullet : MonoBehaviour
 
     private void HitTarget()
     {
+        //create an impact effect and destroy the bullet and damage the enemy
         Destroy(gameObject);
         GameObject impact = Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(impact,3f);
-        Destroy(target.gameObject);
-        Debug.Log("HIT"); 
+        target.gameObject.GetComponent<Enemy>().takeDamage(damage);//currently we only target enemies i.e game objs with enemy script
     }
 }
