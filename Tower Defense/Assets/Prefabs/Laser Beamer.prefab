@@ -56,6 +56,8 @@ MonoBehaviour:
   lineRenderer: {fileID: 0}
   LaserImpact: {fileID: 7109864648465783682}
   impactLight: {fileID: 5347258159054347892}
+  DamageOverTime: 6
+  slowingFactor: 0.3
 --- !u!120 &8739474759788076096
 LineRenderer:
   m_ObjectHideFlags: 0

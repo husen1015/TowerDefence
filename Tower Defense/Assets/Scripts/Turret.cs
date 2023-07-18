@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
+using static UnityEngine.GraphicsBuffer;
 
 public class Turret : MonoBehaviour
 {
     private Transform currTarget = null;
+    private Enemy currEnemyScript;
     [Header("Attributes")]
     private float range = 15f;
     public Transform partToRotate;
@@ -23,6 +25,8 @@ public class Turret : MonoBehaviour
     public LineRenderer lineRenderer;
     public ParticleSystem LaserImpact;
     public Light impactLight;
+    public int DamageOverTime = 10;
+    public float slowingFactor = 0.3f;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +52,7 @@ public class Turret : MonoBehaviour
         if(nearestEnemy != null && nearestEnemyDist <= range) 
         {
             currTarget = nearestEnemy.transform;
+            currEnemyScript = currTarget.GetComponent<Enemy>();
         }
         else
         {
@@ -101,6 +106,9 @@ public class Turret : MonoBehaviour
     }
     private void ShootLaser()
     {
+
+        currEnemyScript.takeDamage(DamageOverTime * Time.deltaTime);//currently we only target enemies i.e game objs with enemy script
+        currEnemyScript.Slow(slowingFactor);
         if (!lineRenderer.enabled)
         {
             lineRenderer.enabled = true;

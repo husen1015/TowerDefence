@@ -6,11 +6,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Attributes")]
-    public int health = 4;
-    public float speed = 10f;
+    public float health = 4;
+    public float topSpeed = 10f;
     public int worth = 25;
     public GameObject deathEffect;
 
+    private float speed;
     private Transform currTarget;
     private int wayPointIndex = 0;
     private int waypointsNum;
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        speed = topSpeed;
         currTarget = Waypoints.waypointsArr[0];
         waypointsNum = Waypoints.waypointsArr.Length;
         gameManager = GameManager.Instance;
@@ -33,8 +35,9 @@ public class Enemy : MonoBehaviour
         {
             GetNextWaypoint();
         }
+        speed= topSpeed;//unclear how this is working currently
     }
-    public void takeDamage(int amount)
+    public void takeDamage(float amount)
     {
         this.health -= amount;
         Debug.Log(this.health);
@@ -47,6 +50,10 @@ public class Enemy : MonoBehaviour
 
             gameManager.incrementBalance(worth);
         }
+    }
+    public void Slow(float amount)
+    {
+        speed = topSpeed * (1 - amount);
     }
     private void GetNextWaypoint()
     {
@@ -61,4 +68,5 @@ public class Enemy : MonoBehaviour
             
         }
     }
+    
 }
