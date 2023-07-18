@@ -8,6 +8,7 @@ public class BuildManager : MonoBehaviour
 {
     
     public static BuildManager Instance { get; private set; }
+    public GameObject buildEffect;
     //public GameObject standardTurret;
     //public GameObject MissileTurret;
     private TurretBlueprint turretToBuild;
@@ -43,6 +44,8 @@ public class BuildManager : MonoBehaviour
         else
         {
             GameObject turr = Instantiate(turretToBuild.prefab, turretPlatform.transform.position + turretPlatform.PositionOffset, Quaternion.identity);
+            GameObject effect = Instantiate(buildEffect, turretPlatform.transform.position, Quaternion.identity);
+            Destroy(effect, 3f);
             turretPlatform.Turret = turr;
             //GameManager.Balance -= turretToBuild.cost;
             GameManager.Instance.incrementBalance(-1 * turretToBuild.cost);
