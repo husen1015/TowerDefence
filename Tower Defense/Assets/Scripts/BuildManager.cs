@@ -31,6 +31,10 @@ public class BuildManager : MonoBehaviour
     {
         this.turretToBuild = turretToBuild;
     }
+    public void unselectTurret()
+    {
+        this.turretToBuild = null;
+    }
 
     public void buildOn(TurretPlatform turretPlatform)
     {

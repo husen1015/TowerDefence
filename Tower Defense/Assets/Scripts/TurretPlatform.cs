@@ -39,6 +39,8 @@ public class TurretPlatform : MonoBehaviour
             }
         }
     }
+
+    
     private void OnMouseEnter()
     {
         //avoid UI elements that are in the way
@@ -54,7 +56,6 @@ public class TurretPlatform : MonoBehaviour
     private void OnMouseExit()
     {
         platformRenderer.material.color = originalColor;
-
     }
     public Vector3 PositionOffset { get { return positionOffset; }   }
     public GameObject Turret { get { return currTurret; } set { } }
