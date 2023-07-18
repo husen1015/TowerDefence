@@ -34,8 +34,16 @@ public class BuildManager : MonoBehaviour
 
     public void buildOn(TurretPlatform turretPlatform)
     {
-        Debug.Log("building");
-        GameObject turr = Instantiate(turretToBuild.prefab, turretPlatform.transform.position + turretPlatform.PositionOffset, Quaternion.identity);
-        turretPlatform.Turret = turr;
+        if (GameManager.Balance < turretToBuild.cost)
+        {
+            Debug.Log("not enough money");
+        }
+        else
+        {
+            GameObject turr = Instantiate(turretToBuild.prefab, turretPlatform.transform.position + turretPlatform.PositionOffset, Quaternion.identity);
+            turretPlatform.Turret = turr;
+            GameManager.Balance -= turretToBuild.cost;
+            Debug.Log($"building, money left: {GameManager.Balance}");
+        }
     }
 }
