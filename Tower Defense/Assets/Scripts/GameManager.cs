@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
     public static int Balance;
     public int startBalance = 400;
-    int livesLeft;
     public int startingLives = 5;
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI livesText;
-
-
+    public GameObject gameOverUi;
+    public static int roundsPlayed;
+    private bool gameOver = false;
+    int livesLeft;
     public static GameManager Instance { get; private set; }
 
     BuildManager buildManager;
@@ -34,9 +35,14 @@ public class GameManager : MonoBehaviour
         Balance = startBalance;
         moneyText.text = $"{startBalance.ToString()}$";
         livesText.text = $"Lives Left: {livesLeft}";
+        roundsPlayed= 0;
     }
     private void Update()
     {
+        if (Input.GetKeyDown("e"))
+        {
+            endGame();
+        }
         if (Input.GetMouseButtonDown(1))
         {
             buildManager.unselectTurret();
@@ -62,6 +68,8 @@ public class GameManager : MonoBehaviour
     }
     private void endGame()
     {
-        SceneManager.LoadScene(1);
+        gameOver = true;
+        gameOverUi.SetActive(true);
     }
+    public bool GameOver { get { return gameOver; } }
 }

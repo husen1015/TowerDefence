@@ -10,8 +10,10 @@ public class WaveSpawner : MonoBehaviour
     public Transform enemyPrefab;
     public TextMeshProUGUI countdownText;
     public float timeOffsetBetweenWaves = 5.5f;
+    
     private float countdown = 2f;
     private int waveNumber = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class WaveSpawner : MonoBehaviour
         }
         Debug.Log($"wave incoming! wave number: {waveNumber}");
         waveNumber++;
+        GameManager.roundsPlayed++;
     }
 
     private void spawnEnemy()
