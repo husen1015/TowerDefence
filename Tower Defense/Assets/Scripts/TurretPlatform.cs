@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class TurretPlatform : MonoBehaviour
 {
     public Color hoverColor;
+    public Color noMoneyColor;
     Renderer platformRenderer;
     Color originalColor;
 
@@ -30,8 +31,7 @@ public class TurretPlatform : MonoBehaviour
             if (currTurret != null)
             {
                 Debug.Log("slot already occupied");
-            }
-            else
+            }else
             {
                 //build a turret
                 buildManager.buildOn(this);
@@ -50,7 +50,16 @@ public class TurretPlatform : MonoBehaviour
         }
         if (buildManager.CanBuild)
         {
-            platformRenderer.material.color = hoverColor;
+            //TODO: put a preview here of the turret 
+            if (!buildManager.hasMoney)
+            {
+                platformRenderer.material.color = noMoneyColor;
+
+            }
+            else
+            {
+                platformRenderer.material.color = hoverColor;
+            }
         }
     }
     private void OnMouseExit()

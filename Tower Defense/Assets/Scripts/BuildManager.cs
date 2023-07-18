@@ -22,11 +22,9 @@ public class BuildManager : MonoBehaviour
         Instance = this;
     }
     public bool CanBuild { get {return turretToBuild!= null; } } //getter property
+    public bool hasMoney { get { return GameManager.Balance > turretToBuild.cost; } } //getter property
 
-    //public TurretBlueprint GetTurretToBuild()
-    //{
-    //    return turretToBuild;
-    //}
+
     public void setTurretToBuild(TurretBlueprint turretToBuild)
     {
         this.turretToBuild = turretToBuild;
@@ -46,7 +44,8 @@ public class BuildManager : MonoBehaviour
         {
             GameObject turr = Instantiate(turretToBuild.prefab, turretPlatform.transform.position + turretPlatform.PositionOffset, Quaternion.identity);
             turretPlatform.Turret = turr;
-            GameManager.Balance -= turretToBuild.cost;
+            //GameManager.Balance -= turretToBuild.cost;
+            GameManager.Instance.incrementBalance(-1 * turretToBuild.cost);
             Debug.Log($"building, money left: {GameManager.Balance}");
         }
     }

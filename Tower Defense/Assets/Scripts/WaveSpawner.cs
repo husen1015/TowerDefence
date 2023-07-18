@@ -38,7 +38,7 @@ public class WaveSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        countdownText.text = Mathf.Round(countdown).ToString();
+        countdownText.text = $"Time till next wave: {Mathf.Round(countdown).ToString()}";
         if (countdown <= 0)
         {
             StartCoroutine(SpawnNextWave());

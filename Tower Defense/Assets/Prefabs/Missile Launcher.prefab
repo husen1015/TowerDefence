@@ -281,7 +281,7 @@ MonoBehaviour:
   partToRotate: {fileID: 4842845645798132127}
   Bullet: {fileID: 4634993446163235835, guid: 90ad2e8ede3d41846bf7a5a6e62efe6e, type: 3}
   firePoint: {fileID: 8256012630725570584}
-  fireRate: 4
+  fireRate: 0.5
 --- !u!1 &7911536844515312220
 GameObject:
   m_ObjectHideFlags: 0
