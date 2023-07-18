@@ -1,14 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class BuildManager : MonoBehaviour
 {
     
     public static BuildManager Instance { get; private set; }
-    public GameObject standardTurret;
-    public GameObject MissileTurret;
-    private GameObject turretToBuild;
+    //public GameObject standardTurret;
+    //public GameObject MissileTurret;
+    private TurretBlueprint turretToBuild;
 
     private void Awake()
     {
@@ -19,14 +21,21 @@ public class BuildManager : MonoBehaviour
         }
         Instance = this;
     }
+    public bool CanBuild { get {return turretToBuild!= null; } } //getter property
 
-
-    public GameObject GetTurretToBuild()
-    {
-        return turretToBuild;
-    }
-    public void setTurretToBuild(GameObject turretToBuild)
+    //public TurretBlueprint GetTurretToBuild()
+    //{
+    //    return turretToBuild;
+    //}
+    public void setTurretToBuild(TurretBlueprint turretToBuild)
     {
         this.turretToBuild = turretToBuild;
+    }
+
+    public void buildOn(TurretPlatform turretPlatform)
+    {
+        Debug.Log("building");
+        GameObject turr = Instantiate(turretToBuild.prefab, turretPlatform.transform.position + turretPlatform.PositionOffset, Quaternion.identity);
+        turretPlatform.Turret = turr;
     }
 }

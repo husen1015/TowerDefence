@@ -5,11 +5,11 @@ using UnityEngine.EventSystems;
 
 public class TurretPlatform : MonoBehaviour
 {
-    public Vector3 positionOffset;
     public Color hoverColor;
     Renderer platformRenderer;
     Color originalColor;
 
+    private Vector3 positionOffset;
     private BuildManager buildManager;
     private GameObject currTurret;
     void Start()
@@ -24,8 +24,8 @@ public class TurretPlatform : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
-        }
-        if (!(buildManager.GetTurretToBuild() == null))
+        } 
+        if (buildManager.CanBuild)
         {
             if (currTurret != null)
             {
@@ -34,8 +34,8 @@ public class TurretPlatform : MonoBehaviour
             else
             {
                 //build a turret
-                GameObject turret = buildManager.GetTurretToBuild();
-                currTurret = Instantiate(turret, transform.position + positionOffset, transform.rotation);
+                buildManager.buildOn(this);
+
             }
         }
     }
@@ -46,7 +46,7 @@ public class TurretPlatform : MonoBehaviour
         {
             return;
         }
-        if (!(buildManager.GetTurretToBuild() == null))
+        if (buildManager.CanBuild)
         {
             platformRenderer.material.color = hoverColor;
         }
@@ -56,4 +56,6 @@ public class TurretPlatform : MonoBehaviour
         platformRenderer.material.color = originalColor;
 
     }
+    public Vector3 PositionOffset { get { return positionOffset; }   }
+    public GameObject Turret { get { return currTurret; } set { } }
 }

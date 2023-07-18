@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+    public TurretBlueprint standardTurret;
+    public TurretBlueprint MissileTurret;
+
     BuildManager buildManager;
     private int balance;
     // Start is called before the first frame update
@@ -14,11 +17,11 @@ public class Shop : MonoBehaviour
     public void SelectStandardTurret()
     {
         Debug.Log("standard turret selected");
-        buildManager.setTurretToBuild(buildManager.standardTurret);
+        buildManager.setTurretToBuild(standardTurret);
     }
     public void SelectMissileTurret()
     {
         Debug.Log("Missile turret selected");
-        buildManager.setTurretToBuild(buildManager.MissileTurret);
+        buildManager.setTurretToBuild(MissileTurret);
     }
 }
