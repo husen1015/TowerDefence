@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class Turret : MonoBehaviour
 {
@@ -20,7 +21,8 @@ public class Turret : MonoBehaviour
     [Header("Use Laser")]
     public bool useLaser = false;
     public LineRenderer lineRenderer;
-
+    public ParticleSystem LaserImpact;
+    public Light impactLight;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,15 +72,18 @@ public class Turret : MonoBehaviour
                 fireCountDown -= Time.deltaTime;
             }else
             {
-                lineRenderer.enabled = true;
+
                 ShootLaser();
             }
         }
         else
         {
+            //if we dont have a target we dont want any lasers
             if(useLaser && lineRenderer != null) 
             {
                 lineRenderer.enabled = false;
+                LaserImpact.Stop();
+                impactLight.enabled= false;
             }
         }
 
@@ -96,8 +101,18 @@ public class Turret : MonoBehaviour
     }
     private void ShootLaser()
     {
+        if (!lineRenderer.enabled)
+        {
+            lineRenderer.enabled = true;
+            LaserImpact.Play();
+            impactLight.enabled=true;
+        }
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, currTarget.position);
+
+        Vector3 dir = (firePoint.position - currTarget.position);
+        LaserImpact.transform.position = currTarget.position + dir.normalized;
+        LaserImpact.transform.rotation = Quaternion.LookRotation(dir) ; 
     }
     void LockOnTarget()
     {
