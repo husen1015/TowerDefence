@@ -11,20 +11,14 @@ public class Shop : MonoBehaviour
     {
         buildManager = BuildManager.Instance;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void SelectStandardTurret()
     {
-        Debug.Log("standard turret purchased");
+        Debug.Log("standard turret selected");
         buildManager.setTurretToBuild(buildManager.standardTurret);
     }
     public void SelectMissileTurret()
     {
-        Debug.Log("Missile turret purchased");
+        Debug.Log("Missile turret selected");
         buildManager.setTurretToBuild(buildManager.MissileTurret);
     }
 }

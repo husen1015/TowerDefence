@@ -7,9 +7,8 @@ public class Turret : MonoBehaviour
 {
     public Transform partToRotate;
     private Transform currTarget = null;
-    public GameObject Ammo;
+    public GameObject Bullet;
     public Transform firePoint;
-
     [Header("Attributes")]
     public float fireRate = 1f;
     private float range = 15f;
@@ -21,6 +20,7 @@ public class Turret : MonoBehaviour
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f); //look for a target every 2 seconds to avoid performance issues
+
     }
 
     void UpdateTarget() 
@@ -66,10 +66,11 @@ public class Turret : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("shoot");
-        GameObject currBullet = (GameObject)Instantiate(Ammo, firePoint.transform.position, firePoint.transform.rotation);
-        Bullet bulletScript =  currBullet.GetComponent<Bullet>();
-        if(bulletScript!=null) {
+        //Debug.Log("shoot");
+        GameObject currBullet = (GameObject)Instantiate(Bullet, firePoint.transform.position, firePoint.transform.rotation);
+        Bullet bulletScript = currBullet.GetComponent<Bullet>();
+        if (bulletScript != null)
+        {
             bulletScript.fire(currTarget);
         }
     }
