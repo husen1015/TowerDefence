@@ -6296,7 +6296,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &674933263
 PrefabInstance:
@@ -6735,13 +6735,24 @@ RectTransform:
   - {fileID: 1352477864}
   - {fileID: 2125744807}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &730542250 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9217716193134702277, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
+  m_PrefabInstance: {fileID: 1199101375}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &744644993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11246,9 +11257,21 @@ PrefabInstance:
       propertyPath: ui
       value: 
       objectReference: {fileID: 1855390949}
+    - target: {fileID: 7042722150360228654, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
+      propertyPath: sellText
+      value: 
+      objectReference: {fileID: 730542250}
+    - target: {fileID: 7042722150360228654, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
+      propertyPath: upgradeCost
+      value: 
+      objectReference: {fileID: 2084127963}
+    - target: {fileID: 7042722150360228654, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
+      propertyPath: upgradeText
+      value: 
+      objectReference: {fileID: 2084127963}
     - target: {fileID: 9217716192285579761, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9217716192285579761, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11321,6 +11344,38 @@ PrefabInstance:
     - target: {fileID: 9217716192649207363, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -27.911201
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217716193858692497, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217716193858692497, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217716193858692497, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1855390950}
+    - target: {fileID: 9217716193858692497, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1532242104}
+    - target: {fileID: 9217716193858692497, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217716193858692497, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Upgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217716193858692497, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TurretUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217716193858692497, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 9217716193858692498, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
       propertyPath: m_AnchorMax.y
@@ -14543,7 +14598,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1532242107
 MonoBehaviour:
@@ -14591,12 +14646,24 @@ MonoBehaviour:
   StandardTurret:
     cost: 100
     prefab: {fileID: 2252976563206168872, guid: 17733e364e5af2447a62960ef607b3ed, type: 3}
+    upgradedPrefab: {fileID: 3436702556070979210, guid: 9dee1ebb277e2f94a9a797c810cc4183, type: 3}
+    upgradeCost: 60
+    sellPrice: 50
+    sellPriceU: 96
   MissileTurret:
     cost: 250
     prefab: {fileID: 7799919057633516875, guid: 59197fe8cdde8d947874f2713278d8f1, type: 3}
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 150
+    sellPrice: 0
+    sellPriceU: 0
   LaserTurret:
     cost: 350
     prefab: {fileID: 1454460662162466994, guid: 609067464f1bc6747a7defcfbaf843bb, type: 3}
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 250
+    sellPrice: 0
+    sellPriceU: 0
 --- !u!1001 &1541166159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19832,6 +19899,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4628997021786455767, guid: d514bd3560becaf4992da3d3352f9717, type: 3}
   m_PrefabInstance: {fileID: 2076633590}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2084127963 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9217716193592812079, guid: ddc8595e1a0e06d40a8402725e1f66ad, type: 3}
+  m_PrefabInstance: {fileID: 1199101375}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2098803916
 PrefabInstance:
   m_ObjectHideFlags: 0

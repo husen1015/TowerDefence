@@ -41,8 +41,6 @@ public class BuildManager : MonoBehaviour
     }
     public void SelectPlatform(TurretPlatform plat)
     {
-        Debug.Log(this.selectedPlat);
-        Debug.Log(this.selectedPlat != null && plat == this.selectedPlat);
         //if pressing the same platform twice hide ui
         if (plat == this.selectedPlat)
         {
@@ -66,7 +64,7 @@ public class BuildManager : MonoBehaviour
 
     }
 
-    public void buildOn(TurretPlatform turretPlatform)
+    public void BuildTurret(TurretPlatform turretPlatform)
     {
         if (GameManager.Balance < turretToBuild.cost)
         {
@@ -81,6 +79,27 @@ public class BuildManager : MonoBehaviour
             //GameManager.Balance -= turretToBuild.cost;
             GameManager.Instance.incrementBalance(-1 * turretToBuild.cost);
             Debug.Log($"building, money left: {GameManager.Balance}");
+
+        }
+    }
+    public void UpgradeTurret(TurretPlatform turretPlatform, TurretBlueprint turretBlueprint)
+    {
+        if (GameManager.Balance < turretBlueprint.cost)
+        {
+            Debug.Log("not enough money to Upgrade");
+        }
+        else
+        {
+            //destory old turret
+            Destroy(turretPlatform.Turret);
+            Debug.Log("destoyed old turret");
+            //build new turret
+            GameObject turr = Instantiate(turretBlueprint.upgradedPrefab, turretPlatform.transform.position + turretPlatform.PositionOffset, Quaternion.identity);
+            GameObject effect = Instantiate(buildEffect, turretPlatform.transform.position, Quaternion.identity);
+            Destroy(effect, 3f);
+            turretPlatform.Turret = turr;
+            GameManager.Instance.incrementBalance(-1 * turretBlueprint.upgradeCost);
+            Debug.Log($"Upgrading, money left: {GameManager.Balance}");
 
         }
     }

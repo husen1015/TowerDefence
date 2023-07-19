@@ -10,7 +10,7 @@ public class Turret : MonoBehaviour
     private Transform currTarget = null;
     private Enemy currEnemyScript;
     [Header("Attributes")]
-    private float range = 15f;
+    public float range = 15f;
     public Transform partToRotate;
     public Transform firePoint;
 
