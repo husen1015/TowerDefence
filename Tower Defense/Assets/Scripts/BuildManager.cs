@@ -13,7 +13,7 @@ public class BuildManager : MonoBehaviour
     //public GameObject standardTurret;
     //public GameObject MissileTurret;
     private TurretBlueprint turretToBuild;
-    
+    private GameManager gameManager;
     private TurretPlatform selectedPlat;
 
     private void Awake()
@@ -26,9 +26,13 @@ public class BuildManager : MonoBehaviour
         Instance = this;
         turretToBuild = null;
     }
+    private void Start()
+    {
+        gameManager= GameManager.Instance;
+    }
     public TurretBlueprint CurrTurr { get { return turretToBuild; } }
     public bool CanBuild { get {return turretToBuild!=null && turretToBuild.prefab!= null; } } //getter property
-    public bool hasMoney { get { return GameManager.Balance > turretToBuild.cost; } } //getter property
+    public bool hasMoney { get { return gameManager.Balance > turretToBuild.cost; } } //getter property
 
 
     public void setTurretToBuild(TurretBlueprint turretToBuild)
@@ -56,17 +60,18 @@ public class BuildManager : MonoBehaviour
         this.selectedPlat = null;
         turretUI.Hide();
     }
-    public void unselectTurret()
+    public void Unselect()
     {
         this.turretToBuild = null;
         //this.turretToBuild.prefab = null;
         //this.turretToBuild.cost = -1;
+        DeselectPlatform();
 
     }
 
     public void BuildTurret(TurretPlatform turretPlatform)
     {
-        if (GameManager.Balance < turretToBuild.cost)
+        if (gameManager.Balance < turretToBuild.cost)
         {
             Debug.Log("not enough money");
         }
@@ -78,13 +83,13 @@ public class BuildManager : MonoBehaviour
             turretPlatform.Turret = turr;
             //GameManager.Balance -= turretToBuild.cost;
             GameManager.Instance.incrementBalance(-1 * turretToBuild.cost);
-            Debug.Log($"building, money left: {GameManager.Balance}");
+            Debug.Log($"building, money left: {gameManager.Balance}");
 
         }
     }
     public void UpgradeTurret(TurretPlatform turretPlatform, TurretBlueprint turretBlueprint)
     {
-        if (GameManager.Balance < turretBlueprint.cost)
+        if (gameManager.Balance < turretBlueprint.cost)
         {
             Debug.Log("not enough money to Upgrade");
         }
@@ -98,8 +103,8 @@ public class BuildManager : MonoBehaviour
             GameObject effect = Instantiate(buildEffect, turretPlatform.transform.position, Quaternion.identity);
             Destroy(effect, 3f);
             turretPlatform.Turret = turr;
-            GameManager.Instance.incrementBalance(-1 * turretBlueprint.upgradeCost);
-            Debug.Log($"Upgrading, money left: {GameManager.Balance}");
+            gameManager.incrementBalance(-1 * turretBlueprint.upgradeCost);
+            Debug.Log($"Upgrading, money left: {gameManager.Balance}");
 
         }
     }

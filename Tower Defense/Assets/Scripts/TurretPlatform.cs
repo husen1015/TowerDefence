@@ -7,20 +7,23 @@ public class TurretPlatform : MonoBehaviour
 {
     public Color hoverColor;
     public Color noMoneyColor;
+    public GameObject currTurret;
+    public TurretBlueprint currTurretBlueprint;
+
     Renderer platformRenderer;
     Color originalColor;
 
     private Vector3 positionOffset = new Vector3(0, 0.5f, 0);
     private BuildManager buildManager;
-    public GameObject currTurret;
-    public TurretBlueprint currTurretBlueprint;
     private bool isUpgraded;
+    private GameManager gameManager;
     void Start()
     {
         isUpgraded= false;
         platformRenderer = GetComponent<Renderer>();
         originalColor = platformRenderer.material.color;
         buildManager = BuildManager.Instance;
+        gameManager = GameManager.Instance;
     }
     private void OnMouseDown()
     {
@@ -88,6 +91,16 @@ public class TurretPlatform : MonoBehaviour
         else
         {
             Debug.LogError("cant upgrade turret since no turret exists on the platform");
+        }
+    }
+    public void SellTurret()
+    {
+        if(!(currTurret == null))
+        {
+            Destroy(this.currTurret);
+            int refundPrice = isUpgraded ? currTurretBlueprint.sellPriceU : currTurretBlueprint.sellPrice;
+            gameManager.incrementBalance(refundPrice);
+            currTurretBlueprint = null;
         }
     }
     public Vector3 GetBuildPosition()

@@ -41,4 +41,9 @@ public class TurretUI : MonoBehaviour
         }
 
     }
+    public void Sell()
+    {
+        platform.SellTurret();
+        Hide();
+    }
 }

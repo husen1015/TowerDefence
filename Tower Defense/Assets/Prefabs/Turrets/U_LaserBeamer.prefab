@@ -79,6 +79,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 60b0cd885f45ee4429ee61a19d4e004d, type: 2}
+    - target: {fileID: 2779297458685782837, guid: 609067464f1bc6747a7defcfbaf843bb, type: 3}
+      propertyPath: m_Name
+      value: GlowParticleSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347258159054347892, guid: 609067464f1bc6747a7defcfbaf843bb, type: 3}
+      propertyPath: m_Range
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6780937039799711674, guid: 609067464f1bc6747a7defcfbaf843bb, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6780937039799711674, guid: 609067464f1bc6747a7defcfbaf843bb, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8565708605055777436, guid: 609067464f1bc6747a7defcfbaf843bb, type: 3}
       propertyPath: m_LocalScale.x
       value: 120

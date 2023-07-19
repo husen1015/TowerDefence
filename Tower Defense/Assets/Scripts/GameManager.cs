@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public static int Balance;
+    public int Balance;
     public int startBalance = 400;
     public int startingLives = 5;
     public TextMeshProUGUI moneyText;
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1))
         {
-            buildManager.unselectTurret();
+            buildManager.Unselect();
         }
     }
     public void incrementBalance(int balance)
