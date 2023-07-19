@@ -40,7 +40,6 @@ public class Enemy : MonoBehaviour
     public void takeDamage(float amount)
     {
         this.health -= amount;
-        Debug.Log(this.health);
         //destroy enemy and reward money
         if(health <= 0)
         {
