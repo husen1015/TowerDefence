@@ -20,7 +20,7 @@ public class TurretUI : MonoBehaviour
         transform.position = platform.GetBuildPosition();
         ui.SetActive(true);
         upgradeText.text = $"Upgrade\n{plat.currTurretBlueprint.upgradeCost.ToString()}";
-        sellText.text = plat.IsUpgraded ? $"Sell\n{plat.currTurretBlueprint.sellPriceU.ToString()}" : $"Sell\n{plat.currTurretBlueprint.sellPrice.ToString()}";
+        sellText.text = plat.IsUpgraded ? $"Sell\n{plat.currTurretBlueprint.sellPriceU.ToString()}$" : $"Sell\n{plat.currTurretBlueprint.sellPrice.ToString()}$";
 
 
     }
@@ -30,10 +30,15 @@ public class TurretUI : MonoBehaviour
     }
     public void Upgrade()
     {
-        //upgrade
-        platform.UpgradeTurret();
-        //update sell price
-        sellText.text = $"Sell\n{platform.currTurretBlueprint.sellPriceU.ToString()}";
+        if (!platform.IsUpgraded)
+        {
+            //upgrade
+            platform.UpgradeTurret();
+            //update sell price
+            sellText.text = $"Sell\n{platform.currTurretBlueprint.sellPriceU.ToString()}$";
+            upgradeText.text = $"MAX";
+
+        }
 
     }
 }

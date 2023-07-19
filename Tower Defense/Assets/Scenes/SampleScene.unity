@@ -14649,21 +14649,21 @@ MonoBehaviour:
     upgradedPrefab: {fileID: 3436702556070979210, guid: 9dee1ebb277e2f94a9a797c810cc4183, type: 3}
     upgradeCost: 60
     sellPrice: 50
-    sellPriceU: 96
+    sellPriceU: 80
   MissileTurret:
     cost: 250
     prefab: {fileID: 7799919057633516875, guid: 59197fe8cdde8d947874f2713278d8f1, type: 3}
-    upgradedPrefab: {fileID: 0}
+    upgradedPrefab: {fileID: 9010007838722310261, guid: 3b694badfd286884f9aecb2965297494, type: 3}
     upgradeCost: 150
-    sellPrice: 0
-    sellPriceU: 0
+    sellPrice: 125
+    sellPriceU: 200
   LaserTurret:
     cost: 350
     prefab: {fileID: 1454460662162466994, guid: 609067464f1bc6747a7defcfbaf843bb, type: 3}
-    upgradedPrefab: {fileID: 0}
-    upgradeCost: 250
-    sellPrice: 0
-    sellPriceU: 0
+    upgradedPrefab: {fileID: 309350870910853858, guid: 159e784bae89a9748850ac91068fe33e, type: 3}
+    upgradeCost: 210
+    sellPrice: 175
+    sellPriceU: 280
 --- !u!1001 &1541166159
 PrefabInstance:
   m_ObjectHideFlags: 0
