@@ -10,10 +10,6 @@ public class TurretUI : MonoBehaviour
     public TextMeshProUGUI upgradeText;
     public TextMeshProUGUI sellText;
 
-    private void Start()
-    {
-
-    }
     public void SetTarget(TurretPlatform plat)
     {
         platform = plat;
@@ -44,6 +40,7 @@ public class TurretUI : MonoBehaviour
     public void Sell()
     {
         platform.SellTurret();
+        //might want to use buildManager deselect platform
         Hide();
     }
 }

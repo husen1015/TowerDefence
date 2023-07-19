@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI livesText;
     public GameObject gameOverUi;
+    public GameObject pauseUI;
     public static int roundsPlayed;
     private bool gameOver = false;
     int livesLeft;
@@ -47,6 +50,10 @@ public class GameManager : MonoBehaviour
         {
             buildManager.Unselect();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            togglePauseGame();
+        }
     }
     public void incrementBalance(int balance)
     {
@@ -65,6 +72,34 @@ public class GameManager : MonoBehaviour
             //end game here
             endGame();
         }
+    }
+    private void togglePauseGame()
+    {
+        pauseUI.SetActive(!pauseUI.activeSelf);
+        if(pauseUI.activeSelf)
+        {
+            //pause the game
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+    }
+    public void Resume()
+    {
+        togglePauseGame();
+    }
+    public void Restart()
+    {
+        //unpause then restart the scene
+        togglePauseGame();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+    }
+    public void Menu()
+    {
+
     }
     private void endGame()
     {
