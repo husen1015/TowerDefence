@@ -9,44 +9,68 @@ public class WaveSpawner : MonoBehaviour
     public Transform startPosition;
     public Transform enemyPrefab;
     public TextMeshProUGUI countdownText;
-    public float timeOffsetBetweenWaves = 5.5f;
-    
+    //public float timeOffsetBetweenWaves = 5.5f;
+    public float timeOffsetBetweenWaves = 3.5f;
+
+    public Wave[] waves;
+    public static int ActiveEnemies;
     private float countdown = 2f;
-    private int waveNumber = 1;
+    private int waveNumber = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         countdownText.text = Mathf.Round(timeOffsetBetweenWaves).ToString();
-
+        ActiveEnemies= 0;
     }
 
     IEnumerator SpawnNextWave()
     {
-        for (int i = 0; i < waveNumber; i++)
+        Wave wave = waves[waveNumber];
+        for (int i = 0; i < wave.count; i++)
         {
-            spawnEnemy();
-            yield return new WaitForSeconds(0.5f); //wait half a second between each enemy spawn
+            spawnEnemy(wave.enemy);
+            yield return new WaitForSeconds(1 / wave.spawningRate); 
         }
         Debug.Log($"wave incoming! wave number: {waveNumber}");
         waveNumber++;
         GameManager.roundsPlayed++;
     }
 
-    private void spawnEnemy()
+    private void spawnEnemy(GameObject enemy)
     {
-        Instantiate(enemyPrefab, startPosition.position, startPosition.rotation);
+        Instantiate(enemy, startPosition.position, startPosition.rotation);
+        ActiveEnemies++;
     }
 
     // Update is called once per frame
     void Update()
     {
         countdownText.text = $"Time till next wave: {Mathf.Round(countdown).ToString()}";
-        if (countdown <= 0)
+        if (ActiveEnemies <= 0)
         {
-            StartCoroutine(SpawnNextWave());
-            countdown = timeOffsetBetweenWaves;
+            // there are more waves to go
+            if (waveNumber < waves.Length)
+            {
+                if (countdown <= 0)
+                {
+                    StartCoroutine(SpawnNextWave());
+                    //reset timer between waves
+                    countdown = timeOffsetBetweenWaves;
+                }
+                else
+                {
+                    countdown -= Time.deltaTime;
+                }
+            }
+            // all waves completed
+            else
+            {
+                //move to next level or win screen
+                Debug.Log("level finsihed!");
+                this.enabled= false;
+            }
+
         }
-        countdown -= Time.deltaTime;
     }
 }

@@ -26,18 +26,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1351112221}
-  m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalPosition: {x: 0, y: 0, z: 0.9}
   m_LocalScale: {x: 0.015, y: 0.005, z: 0.015}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1972071476}
   m_Father: {fileID: 2853890363717717002}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.1904, y: 0.97}
+  m_AnchoredPosition: {x: 0, y: 0.51}
   m_SizeDelta: {x: 147.974, y: 141.2178}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1351112224
@@ -127,8 +127,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972071475}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 1, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2099191902}
@@ -137,7 +137,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 25}
+  m_AnchoredPosition: {x: 0, y: 16}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1972071478
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 4117102812200437463}
   - component: {fileID: 4644490459627602495}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: FastEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,7 +318,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 11543b02e1b68264080082d1fd6b13e2, type: 2}
+  - {fileID: 2100000, guid: 3c8ee6f06e6eb264ca9d457a73d4f3ba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -365,8 +365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5888aa06bc90ff74fabb7b6fb13d3499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
-  topSpeed: 10
-  worth: 25
-  deathEffect: {fileID: 2376378920818325642, guid: 1099fee041419954795eb03229ce1cf2, type: 3}
+  StartingHealth: 2
+  topSpeed: 14
+  worth: 35
+  deathEffect: {fileID: 2376378920818325642, guid: 860ec16ed92299745abe67c7847790f7, type: 3}
   healthBar: {fileID: 2099191903}

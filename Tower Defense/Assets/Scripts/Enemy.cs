@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     [Header("Attributes")]
-    public float Startinghealth = 4;
+    public float StartingHealth = 4;
     public float topSpeed = 10f;
     public int worth = 25;
     public GameObject deathEffect;
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         speed = topSpeed;
-        currHealth = Startinghealth;
+        currHealth = StartingHealth;
         currTarget = Waypoints.waypointsArr[0];
         waypointsNum = Waypoints.waypointsArr.Length;
         gameManager = GameManager.Instance;
@@ -44,11 +44,12 @@ public class Enemy : MonoBehaviour
     public void takeDamage(float amount)
     {
         currHealth -= amount;
-        healthBar.fillAmount = currHealth / Startinghealth;
+        healthBar.fillAmount = currHealth / StartingHealth;
         //destroy enemy and reward money
         if(currHealth <= 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            die();
             GameObject effect = Instantiate(deathEffect, this.transform.position, Quaternion.identity);
             Destroy(effect, 3f);
 
@@ -67,10 +68,17 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            die();
             gameManager.incrementLives(-1);
             
         }
     }
-    
+
+    private void die()
+    {
+        Destroy(gameObject);
+        WaveSpawner.ActiveEnemies -= 1;
+    }
+
 }

@@ -15178,6 +15178,13 @@ MonoBehaviour:
   enemyPrefab: {fileID: 2853890363717717002, guid: 2bb9bc37f6ccb9d46a3785d2ba3f9c1a, type: 3}
   countdownText: {fileID: 300142293}
   timeOffsetBetweenWaves: 5
+  waves:
+  - enemy: {fileID: 3811808399725410759, guid: 2bb9bc37f6ccb9d46a3785d2ba3f9c1a, type: 3}
+    count: 2
+    spawningRate: 2
+  - enemy: {fileID: 3811808399725410759, guid: 2bb9bc37f6ccb9d46a3785d2ba3f9c1a, type: 3}
+    count: 4
+    spawningRate: 2
 --- !u!4 &1532242106
 Transform:
   m_ObjectHideFlags: 0
