@@ -8,13 +8,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public SceneFader sceneFader;
-
+    public static int currLevel = 1;
     public int Balance;
     public int startBalance = 400;
     public int startingLives = 5;
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI livesText;
     public GameObject gameOverUi;
+    public GameObject lvlWonUI;
+
     public GameObject pauseUI;
     public static int roundsPlayed;
     private bool gameOver = false;
@@ -109,6 +111,20 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         gameOverUi.SetActive(true);
+    }
+    public void WinLevel()
+    {
+        //TODO-this may need to change
+        gameOver = true;
+
+        currLevel++;
+        Debug.Log($"curr lvl: {currLevel} playerprefs: {PlayerPrefs.GetInt("levelReached")}");
+        //if reaching this level for the first time update player prefs
+        if (PlayerPrefs.GetInt("levelReached") < currLevel)
+        {
+            PlayerPrefs.SetInt("levelReached", currLevel);
+        }
+        lvlWonUI.SetActive(true);
     }
     public bool GameOver { get { return gameOver; } }
 }

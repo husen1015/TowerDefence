@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     private int wayPointIndex = 0;
     private int waypointsNum;
     private GameManager gameManager;
+    private bool isDead;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour
         currTarget = Waypoints.waypointsArr[0];
         waypointsNum = Waypoints.waypointsArr.Length;
         gameManager = GameManager.Instance;
+        isDead= false;
     }
 
     // Update is called once per frame
@@ -77,8 +79,12 @@ public class Enemy : MonoBehaviour
 
     private void die()
     {
-        Destroy(gameObject);
-        WaveSpawner.ActiveEnemies -= 1;
+        if (!isDead)
+        {
+            Destroy(gameObject);
+            WaveSpawner.ActiveEnemies -= 1;
+            isDead = true;
+        }
     }
 
 }

@@ -16,17 +16,19 @@ public class WaveSpawner : MonoBehaviour
     public static int ActiveEnemies;
     private float countdown = 2f;
     private int waveNumber = 0;
-
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
         countdownText.text = Mathf.Round(timeOffsetBetweenWaves).ToString();
         ActiveEnemies= 0;
+        gameManager = GameManager.Instance;
     }
 
     IEnumerator SpawnNextWave()
     {
         Wave wave = waves[waveNumber];
+        ActiveEnemies = wave.count;
         for (int i = 0; i < wave.count; i++)
         {
             spawnEnemy(wave.enemy);
@@ -40,7 +42,7 @@ public class WaveSpawner : MonoBehaviour
     private void spawnEnemy(GameObject enemy)
     {
         Instantiate(enemy, startPosition.position, startPosition.rotation);
-        ActiveEnemies++;
+        //ActiveEnemies++;
     }
 
     // Update is called once per frame
@@ -68,6 +70,7 @@ public class WaveSpawner : MonoBehaviour
             {
                 //move to next level or win screen
                 Debug.Log("level finsihed!");
+                gameManager.WinLevel();
                 this.enabled= false;
             }
 
