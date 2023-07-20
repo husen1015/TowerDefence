@@ -15177,13 +15177,22 @@ MonoBehaviour:
   startPosition: {fileID: 7753239}
   enemyPrefab: {fileID: 2853890363717717002, guid: 2bb9bc37f6ccb9d46a3785d2ba3f9c1a, type: 3}
   countdownText: {fileID: 300142293}
-  timeOffsetBetweenWaves: 5
+  timeOffsetBetweenWaves: 3
   waves:
   - enemy: {fileID: 3811808399725410759, guid: 2bb9bc37f6ccb9d46a3785d2ba3f9c1a, type: 3}
     count: 2
     spawningRate: 2
   - enemy: {fileID: 3811808399725410759, guid: 2bb9bc37f6ccb9d46a3785d2ba3f9c1a, type: 3}
     count: 4
+    spawningRate: 2
+  - enemy: {fileID: 3811808399725410759, guid: 2bb9bc37f6ccb9d46a3785d2ba3f9c1a, type: 3}
+    count: 9
+    spawningRate: 2
+  - enemy: {fileID: 3811808399725410759, guid: c9fd48ca16303524bae3ed01573349a9, type: 3}
+    count: 3
+    spawningRate: 1
+  - enemy: {fileID: 3811808399725410759, guid: fd61d0570bae9164c909eacdaa14622a, type: 3}
+    count: 7
     spawningRate: 2
 --- !u!4 &1532242106
 Transform:
