@@ -2,15 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     [Header("Attributes")]
-    public float health = 4;
+    public float Startinghealth = 4;
     public float topSpeed = 10f;
     public int worth = 25;
     public GameObject deathEffect;
+    public Image healthBar;
 
+    private float currHealth;
     private float speed;
     private Transform currTarget;
     private int wayPointIndex = 0;
@@ -20,6 +23,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         speed = topSpeed;
+        currHealth = Startinghealth;
         currTarget = Waypoints.waypointsArr[0];
         waypointsNum = Waypoints.waypointsArr.Length;
         gameManager = GameManager.Instance;
@@ -39,9 +43,10 @@ public class Enemy : MonoBehaviour
     }
     public void takeDamage(float amount)
     {
-        this.health -= amount;
+        currHealth -= amount;
+        healthBar.fillAmount = currHealth / Startinghealth;
         //destroy enemy and reward money
-        if(health <= 0)
+        if(currHealth <= 0)
         {
             Destroy(gameObject);
             GameObject effect = Instantiate(deathEffect, this.transform.position, Quaternion.identity);
