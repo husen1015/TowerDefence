@@ -15874,6 +15874,24 @@ MonoBehaviour:
   - enemy: {fileID: 3811808399725410759, guid: 2bb9bc37f6ccb9d46a3785d2ba3f9c1a, type: 3}
     count: 2
     spawningRate: 2
+  - enemy: {fileID: 3811808399725410759, guid: 2bb9bc37f6ccb9d46a3785d2ba3f9c1a, type: 3}
+    count: 6
+    spawningRate: 2
+  - enemy: {fileID: 3811808399725410759, guid: c9fd48ca16303524bae3ed01573349a9, type: 3}
+    count: 4
+    spawningRate: 2
+  - enemy: {fileID: 3811808399725410759, guid: fd61d0570bae9164c909eacdaa14622a, type: 3}
+    count: 10
+    spawningRate: 2
+  - enemy: {fileID: 3811808399725410759, guid: c9fd48ca16303524bae3ed01573349a9, type: 3}
+    count: 7
+    spawningRate: 2
+  - enemy: {fileID: 3811808399725410759, guid: 2bb9bc37f6ccb9d46a3785d2ba3f9c1a, type: 3}
+    count: 15
+    spawningRate: 2
+  - enemy: {fileID: 3811808399725410759, guid: fd61d0570bae9164c909eacdaa14622a, type: 3}
+    count: 25
+    spawningRate: 4
 --- !u!4 &1532242106
 Transform:
   m_ObjectHideFlags: 0
