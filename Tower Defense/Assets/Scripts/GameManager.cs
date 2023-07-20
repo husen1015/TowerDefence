@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public SceneFader sceneFader;
 
     public int Balance;
     public int startBalance = 400;
@@ -94,11 +95,14 @@ public class GameManager : MonoBehaviour
     {
         //unpause then restart the scene
         togglePauseGame();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        sceneFader.FadeTo(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
     public void Menu()
     {
+        togglePauseGame();
+        sceneFader.FadeTo("MainMenu");
 
     }
     private void endGame()
