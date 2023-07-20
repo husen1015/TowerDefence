@@ -15935,7 +15935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneFader: {fileID: 1562858961}
   Balance: 0
-  startBalance: 9999
+  startBalance: 200
   startingLives: 5
   moneyText: {fileID: 1982195402}
   livesText: {fileID: 476527293}
