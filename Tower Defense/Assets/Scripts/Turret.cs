@@ -56,6 +56,11 @@ public class Turret : MonoBehaviour
         }
         else
         {
+            //if using laser then stop slowing enemy
+            if(useLaser && currTarget != null)
+            {
+                currEnemyScript.ResetSpeed();
+            }
             currTarget = null;
         }
     }

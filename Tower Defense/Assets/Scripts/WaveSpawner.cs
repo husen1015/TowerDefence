@@ -45,6 +45,7 @@ public class WaveSpawner : MonoBehaviour
     {
         //enemy.GetComponent<Enemy>().setPath(pathId);
         Instantiate(enemy, startPosition.position, startPosition.rotation);
+
         //ActiveEnemies++;
     }
 

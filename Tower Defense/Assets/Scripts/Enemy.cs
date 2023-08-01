@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public int worth = 25;
     public GameObject deathEffect;
     public Image healthBar;
+    public int pathId;
 
     private float currHealth;
     private float speed;
@@ -20,7 +21,9 @@ public class Enemy : MonoBehaviour
     private int waypointsNum;
     private GameManager gameManager;
     private bool isDead;
-    public int pathId;
+    private Animator animator;
+    private float velocity;
+    private bool isSlowing = false;
 
     //rotation related variables
     private bool isRotating = false;
@@ -30,14 +33,15 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         this.pathId = WaveSpawner.currPathIndx;
         speed = topSpeed;
         currHealth = StartingHealth;
         //currTarget = Waypoints.waypointsArr[0];
         currTarget = Waypoints.waypointsList[this.pathId][0]; //set the first waypoint of the current path
+        transform.LookAt(currTarget);
         //waypointsNum = Waypoints.waypointsArr.Length;
         waypointsNum = Waypoints.waypointsList[this.pathId].Count;
-        Debug.Log(waypointsNum);
 
         gameManager = GameManager.Instance;
         isDead= false;
@@ -46,7 +50,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(currTarget.position);
         Vector3 dir = currTarget.position - this.transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
@@ -54,11 +57,13 @@ public class Enemy : MonoBehaviour
         {
             GetNextWaypoint();
         }
-        speed= topSpeed;//unclear how this is working currently
+        speed = topSpeed;//unclear how this is working currently
     }
     public void takeDamage(float amount)
     {
         currHealth -= amount;
+        Debug.Log($"taking damage curr health: {currHealth}");
+
         healthBar.fillAmount = currHealth / StartingHealth;
         //destroy enemy and reward money
         if(currHealth <= 0)
@@ -71,9 +76,45 @@ public class Enemy : MonoBehaviour
             gameManager.incrementBalance(worth);
         }
     }
+    public void ResetSpeed()
+    {
+        if (animator != null)
+        {
+            isSlowing = false;
+            StartCoroutine(decreaseVelocity());
+        }
+    }
     public void Slow(float amount)
     {
+        //slow the speed as well as the blend tree in the animator
+        isSlowing = true; 
         speed = topSpeed * (1 - amount);
+        if (animator != null)
+        {
+            velocity = animator.GetFloat("Velocity");
+            if (velocity < 1)
+            {
+                StartCoroutine(increaseVelocity());
+            }
+        }
+    }
+    private IEnumerator increaseVelocity()
+    {
+        while (velocity < 1 && isSlowing)
+        {
+            velocity += Time.deltaTime * 0.01f;
+            animator.SetFloat("Velocity", velocity);
+            yield return null;
+        }
+    }
+    private IEnumerator decreaseVelocity()
+    {
+        while (velocity > 0)
+        {
+            velocity -= Time.deltaTime * 0.5f;
+            animator.SetFloat("Velocity", velocity);
+            yield return null;
+        }
     }
     private void GetNextWaypoint()
     {
@@ -82,8 +123,6 @@ public class Enemy : MonoBehaviour
             currTarget = Waypoints.waypointsList[this.pathId][++wayPointIndex];
 
             //rotate towards the next waypoint
-            //this makes a sudden turn which is not relaistic enough
-            //transform.LookAt(currTarget); 
 
             // Calculate the rotation direction to the next waypoint
             Vector3 directionToTarget = currTarget.position - transform.position;
