@@ -13,6 +13,7 @@ public class WaveSpawner : MonoBehaviour
     public float timeOffsetBetweenWaves = 3.5f;
 
     public Wave[] waves;
+    public static int currPathIndx = 0;
     public static int ActiveEnemies;
     private float countdown = 2f;
     private int waveNumber = 0;
@@ -28,10 +29,11 @@ public class WaveSpawner : MonoBehaviour
     IEnumerator SpawnNextWave()
     {
         Wave wave = waves[waveNumber];
+        currPathIndx = wave.pathIndx;
         ActiveEnemies = wave.count;
         for (int i = 0; i < wave.count; i++)
         {
-            spawnEnemy(wave.enemy);
+            spawnEnemy(wave.enemy, wave.pathIndx);
             yield return new WaitForSeconds(1 / wave.spawningRate); 
         }
         Debug.Log($"wave incoming! wave number: {waveNumber}");
@@ -39,8 +41,9 @@ public class WaveSpawner : MonoBehaviour
         GameManager.roundsPlayed++;
     }
 
-    private void spawnEnemy(GameObject enemy)
+    private void spawnEnemy(GameObject enemy, int pathId)
     {
+        //enemy.GetComponent<Enemy>().setPath(pathId);
         Instantiate(enemy, startPosition.position, startPosition.rotation);
         //ActiveEnemies++;
     }

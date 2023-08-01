@@ -20,13 +20,19 @@ public class Enemy : MonoBehaviour
     private int waypointsNum;
     private GameManager gameManager;
     private bool isDead;
+    public int pathId;
     // Start is called before the first frame update
     void Start()
     {
+        this.pathId = WaveSpawner.currPathIndx;
         speed = topSpeed;
         currHealth = StartingHealth;
-        currTarget = Waypoints.waypointsArr[0];
-        waypointsNum = Waypoints.waypointsArr.Length;
+        //currTarget = Waypoints.waypointsArr[0];
+        currTarget = Waypoints.waypointsList[this.pathId][0]; //set the first waypoint of the current path
+        //waypointsNum = Waypoints.waypointsArr.Length;
+        waypointsNum = Waypoints.waypointsList[this.pathId].Count;
+        Debug.Log(waypointsNum);
+
         gameManager = GameManager.Instance;
         isDead= false;
     }
@@ -34,6 +40,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(currTarget.position);
         Vector3 dir = currTarget.position - this.transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
@@ -66,7 +73,7 @@ public class Enemy : MonoBehaviour
     {
         if (wayPointIndex < waypointsNum - 1) 
         {
-            currTarget = Waypoints.waypointsArr[++wayPointIndex];
+            currTarget = Waypoints.waypointsList[this.pathId][++wayPointIndex];
         }
         else
         {
@@ -86,5 +93,11 @@ public class Enemy : MonoBehaviour
             isDead = true;
         }
     }
+    //public void setPath(int pathId)
+    //{
+    //    currTarget = Waypoints.waypointsList[pathId][0];
+    //    waypointsNum = Waypoints.waypointsList[pathId].Count;
+    //    this.pathId = pathId;
+    //}
 
 }
