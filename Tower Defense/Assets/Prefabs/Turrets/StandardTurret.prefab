@@ -46,11 +46,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4e150ef1daf074e896a5854ab58793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 15
   partToRotate: {fileID: 920691224727608855}
-  Bullet: {fileID: 6169871951505874626, guid: 4c8350ae4bdce874bafeaae31e617514, type: 3}
   firePoint: {fileID: 2578313179379409592}
-  bullet2: {fileID: 6169871951505874626, guid: 4c8350ae4bdce874bafeaae31e617514, type: 3}
-  fireRate: 1
+  Bullet: {fileID: 6169871951505874626, guid: 4c8350ae4bdce874bafeaae31e617514, type: 3}
+  fireRate: 1.2
+  useLaser: 0
+  lineRenderer: {fileID: 0}
+  LaserImpact: {fileID: 0}
+  impactLight: {fileID: 0}
+  DamageOverTime: 10
+  slowingFactor: 0.3
 --- !u!1 &4035674126343538793
 GameObject:
   m_ObjectHideFlags: 0

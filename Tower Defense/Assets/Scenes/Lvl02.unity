@@ -16007,27 +16007,27 @@ MonoBehaviour:
   countdownText: {fileID: 300142293}
   timeOffsetBetweenWaves: 3
   waves:
-  - enemy: {fileID: 3811808399725410759, guid: 2bb9bc37f6ccb9d46a3785d2ba3f9c1a, type: 3}
+  - enemy: {fileID: 2724471010214309143, guid: 818a752c3e079b24f957018764af499f, type: 3}
     count: 4
     spawningRate: 3
     pathIndx: 0
-  - enemy: {fileID: 3811808399725410759, guid: 2bb9bc37f6ccb9d46a3785d2ba3f9c1a, type: 3}
+  - enemy: {fileID: 2724471010214309143, guid: 818a752c3e079b24f957018764af499f, type: 3}
     count: 6
     spawningRate: 3
     pathIndx: 0
-  - enemy: {fileID: 3811808399725410759, guid: 2bb9bc37f6ccb9d46a3785d2ba3f9c1a, type: 3}
+  - enemy: {fileID: 2724471010214309143, guid: 818a752c3e079b24f957018764af499f, type: 3}
     count: 11
     spawningRate: 3
     pathIndx: 0
-  - enemy: {fileID: 3811808399725410759, guid: c9fd48ca16303524bae3ed01573349a9, type: 3}
+  - enemy: {fileID: 2630299354943301084, guid: 284ffd22869667d46934a483dcf49a58, type: 3}
     count: 6
     spawningRate: 2
     pathIndx: 0
-  - enemy: {fileID: 3811808399725410759, guid: fd61d0570bae9164c909eacdaa14622a, type: 3}
+  - enemy: {fileID: 5115429103942706641, guid: a7db565347201a24c92c246b2cea18bb, type: 3}
     count: 14
     spawningRate: 3
     pathIndx: 0
-  - enemy: {fileID: 3811808399725410759, guid: c9fd48ca16303524bae3ed01573349a9, type: 3}
+  - enemy: {fileID: 2630299354943301084, guid: 284ffd22869667d46934a483dcf49a58, type: 3}
     count: 9
     spawningRate: 4
     pathIndx: 0

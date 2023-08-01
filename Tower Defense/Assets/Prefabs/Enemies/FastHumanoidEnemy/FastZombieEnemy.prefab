@@ -301,9 +301,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5888aa06bc90ff74fabb7b6fb13d3499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingHealth: 2
+  StartingHealth: 3
   topSpeed: 15
-  worth: 35
+  worth: 25
   deathEffect: {fileID: 2376378920818325642, guid: 860ec16ed92299745abe67c7847790f7, type: 3}
   healthBar: {fileID: 5623401164871270382}
   pathId: 0
