@@ -21,6 +21,12 @@ public class Enemy : MonoBehaviour
     private GameManager gameManager;
     private bool isDead;
     public int pathId;
+
+    //rotation related variables
+    private bool isRotating = false;
+    private Quaternion targetRotation;
+    private float rotationSpeed = 5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +80,20 @@ public class Enemy : MonoBehaviour
         if (wayPointIndex < waypointsNum - 1) 
         {
             currTarget = Waypoints.waypointsList[this.pathId][++wayPointIndex];
+
+            //rotate towards the next waypoint
+            //this makes a sudden turn which is not relaistic enough
+            //transform.LookAt(currTarget); 
+
+            // Calculate the rotation direction to the next waypoint
+            Vector3 directionToTarget = currTarget.position - transform.position;
+            targetRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
+
+            // start rotating using a coroutine
+            if (!isRotating)
+            {
+                StartCoroutine(RotateTowardsTarget());
+            }
         }
         else
         {
@@ -84,6 +104,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private IEnumerator RotateTowardsTarget()
+    {
+        isRotating = true;
+
+        while (transform.rotation != targetRotation)
+        {
+            // Gradually rotate towards the target rotation
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+
+            yield return null;
+        }
+
+        isRotating = false;
+    }
     private void die()
     {
         if (!isDead)
