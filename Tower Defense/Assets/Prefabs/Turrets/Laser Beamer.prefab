@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4e150ef1daf074e896a5854ab58793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 15
   partToRotate: {fileID: 3620996954284878540}
   firePoint: {fileID: 3308900438056859749}
   Bullet: {fileID: 6169871951505874626, guid: 4c8350ae4bdce874bafeaae31e617514, type: 3}
@@ -56,7 +57,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 0}
   LaserImpact: {fileID: 7109864648465783682}
   impactLight: {fileID: 5347258159054347892}
-  DamageOverTime: 6
+  DamageOverTime: 4
   slowingFactor: 0.3
 --- !u!120 &8739474759788076096
 LineRenderer:
