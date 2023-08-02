@@ -22,6 +22,7 @@ public class LevelWon : MonoBehaviour
     }
     public void Menu()
     {
+        AudioManager.Instance.PlayMainMenuMusic();
         sceneFader.FadeTo("MainMenu");
 
     }

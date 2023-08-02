@@ -20,7 +20,7 @@ public class LevelSelector : MonoBehaviour
 
     public void Select(string lvlName)
     {
-        AudioManager.Instance.StopMainMenuMusic();
+        //AudioManager.Instance.StopMainMenuMusic();
 
         fader.FadeTo(lvlName);
     }

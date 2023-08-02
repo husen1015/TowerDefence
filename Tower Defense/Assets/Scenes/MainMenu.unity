@@ -356,11 +356,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -89272467
-      Data2: 1300704287
-      Data3: 151397024
-      Data4: 1651181537
-    Path: event:/laser_sound
+      Data1: 855944468
+      Data2: 1235239869
+      Data3: -1223098221
+      Data4: -2097711749
+    Path: event:/Hitman
   Event: 
   PlayEvent: 0
   StopEvent: 0

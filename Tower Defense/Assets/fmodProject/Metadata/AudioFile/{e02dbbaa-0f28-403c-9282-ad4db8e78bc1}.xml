@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{e02dbbaa-0f28-403c-9282-ad4db8e78bc1}">
+		<property name="assetPath">
+			<value>big_creepy_snarl_growl_nasal_004_78760.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.552</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3e38a6ca-251a-416e-a120-cac510d39a19}</destination>
+		</relationship>
+	</object>
+</objects>

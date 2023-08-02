@@ -36,12 +36,14 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        AudioManager.Instance.PlayLvlMusic();
         livesLeft = startingLives;
         buildManager = BuildManager.Instance;
         Balance = startBalance;
         moneyText.text = $"{startBalance.ToString()}$";
         livesText.text = $"Lives Left: {livesLeft}";
         roundsPlayed= 0;
+
     }
     private void Update()
     {
