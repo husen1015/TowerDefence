@@ -62,8 +62,6 @@ public class Enemy : MonoBehaviour
     public void takeDamage(float amount)
     {
         currHealth -= amount;
-        Debug.Log($"taking damage curr health: {currHealth}");
-
         healthBar.fillAmount = currHealth / StartingHealth;
         //destroy enemy and reward money
         if(currHealth <= 0)

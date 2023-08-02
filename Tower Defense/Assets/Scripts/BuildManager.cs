@@ -77,6 +77,8 @@ public class BuildManager : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.PlayTurretPlacementSound();
+
             GameObject turr = Instantiate(turretToBuild.prefab, turretPlatform.transform.position + turretPlatform.PositionOffset, Quaternion.identity);
             GameObject effect = Instantiate(buildEffect, turretPlatform.transform.position, Quaternion.identity);
             Destroy(effect, 3f);

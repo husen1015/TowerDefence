@@ -18,13 +18,10 @@ public class LevelSelector : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void Select(string lvlName)
     {
+        AudioManager.Instance.StopMainMenuMusic();
+
         fader.FadeTo(lvlName);
     }
 }

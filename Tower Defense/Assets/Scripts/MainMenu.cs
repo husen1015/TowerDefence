@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     private string firstLevel = "LevelSelect";
+
     public SceneFader sceneFader;
     private void Start()
     {
@@ -15,9 +16,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        //SceneManager.LoadScene(firstLevel);
         sceneFader.FadeTo(firstLevel);
-
     }
     public void Quit()
     {

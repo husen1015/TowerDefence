@@ -49,6 +49,7 @@ MonoBehaviour:
   range: 15
   partToRotate: {fileID: 920691224727608855}
   firePoint: {fileID: 2578313179379409592}
+  firingSound: event:/gunshot
   Bullet: {fileID: 6169871951505874626, guid: 4c8350ae4bdce874bafeaae31e617514, type: 3}
   fireRate: 1.2
   useLaser: 0

@@ -9,7 +9,7 @@ public class TurretPlatform : MonoBehaviour
     public Color noMoneyColor;
     public GameObject currTurret;
     public TurretBlueprint currTurretBlueprint;
-
+    
     Renderer platformRenderer;
     Color originalColor;
 
@@ -45,6 +45,7 @@ public class TurretPlatform : MonoBehaviour
             {
                 //build a turret
                 buildManager.BuildTurret(this);
+
                 //set the curr turret blueprint
                 currTurretBlueprint = buildManager.CurrTurr;
             }
@@ -72,7 +73,6 @@ public class TurretPlatform : MonoBehaviour
             if (!buildManager.hasMoney)
             {
                 platformRenderer.material.color = noMoneyColor;
-
             }
             else
             {

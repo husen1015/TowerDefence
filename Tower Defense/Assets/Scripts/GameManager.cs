@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        AudioManager.Instance.StopMainMenuMusic();
         livesLeft = startingLives;
         buildManager = BuildManager.Instance;
         Balance = startBalance;

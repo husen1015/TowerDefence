@@ -13,6 +13,7 @@ public class Turret : MonoBehaviour
     public float range = 15f;
     public Transform partToRotate;
     public Transform firePoint;
+    public string firingSound;
 
     [Header("Use Bullets(default)")]
     public GameObject Bullet;
@@ -62,6 +63,7 @@ public class Turret : MonoBehaviour
                 currEnemyScript.ResetSpeed();
             }
             currTarget = null;
+            AudioManager.Instance.StopLaserSound();
         }
     }
 
@@ -102,6 +104,7 @@ public class Turret : MonoBehaviour
     private void Shoot()
     {
         //Debug.Log("shoot");
+        AudioManager.Instance.PlayShootingSound(firingSound);
         GameObject currBullet = (GameObject)Instantiate(Bullet, firePoint.transform.position, firePoint.transform.rotation);
         Bullet bulletScript = currBullet.GetComponent<Bullet>();
         if (bulletScript != null)
@@ -111,7 +114,7 @@ public class Turret : MonoBehaviour
     }
     private void ShootLaser()
     {
-
+        AudioManager.Instance.PlayLaserShot();
         currEnemyScript.takeDamage(DamageOverTime * Time.deltaTime);//currently we only target enemies i.e game objs with enemy script
         currEnemyScript.Slow(slowingFactor);
         if (!lineRenderer.enabled)

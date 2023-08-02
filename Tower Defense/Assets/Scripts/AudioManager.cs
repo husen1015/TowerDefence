@@ -6,9 +6,12 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     FMOD.Studio.EventInstance mainMenuMusic;
+    FMOD.Studio.EventInstance laserSound;
+
     string uiHoverSound = "event:/short_click_celected";
     string uiSelectSound = "event:/ping_tech";
-
+    string turretPlacementSound = "event:/placement_Sound";
+    string laserSoundPath = "event:/laser_sound";
 
     private void Awake()
     {
@@ -48,5 +51,34 @@ public class AudioManager : MonoBehaviour
     public void PLayButtonSelectSound()
     {
         RuntimeManager.PlayOneShot(uiSelectSound);
+        
+    }
+    public void PlayTurretPlacementSound()
+    {
+        Debug.Log("placiong");
+        RuntimeManager.PlayOneShot(turretPlacementSound);
+    }
+    public void PlayShootingSound(string firingSound)
+    {
+        RuntimeManager.PlayOneShot(firingSound);
+
+    }
+    public void PlayLaserShot()
+    {
+        FMOD.RESULT result = laserSound.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE state);
+        if (result == FMOD.RESULT.OK && state == FMOD.Studio.PLAYBACK_STATE.PLAYING)
+        {
+            // If the sound is still playing, do not create a new instance and return early
+            return;
+        }
+        
+        laserSound = RuntimeManager.CreateInstance(laserSoundPath);
+        laserSound.start();
+
+        
+    }
+    public void StopLaserSound()
+    {
+        laserSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 }

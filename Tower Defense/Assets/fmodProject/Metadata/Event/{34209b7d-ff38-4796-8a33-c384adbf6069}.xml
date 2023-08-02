@@ -5,7 +5,7 @@
 			<value>short_click_celected</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{3be49eb5-e946-4377-879b-7dfa5a989352}</destination>
@@ -73,7 +73,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{a70b832d-08e7-49bd-8e62-4ef2ee6b7a80}">
 		<property name="volume">
-			<value>10</value>
+			<value>-1</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{6fd5d044-1430-4dc6-b67e-10ae205e9005}</destination>
@@ -99,7 +99,6 @@
 	<object class="MixerBusEffectChain" id="{6fd5d044-1430-4dc6-b67e-10ae205e9005}">
 		<relationship name="effects">
 			<destination>{c6238726-c2b7-4d4b-a716-13c77b32caf6}</destination>
-			<destination>{fabe80c9-6bc9-400c-9e2e-8699b342b437}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{5eb39f70-fe9c-4782-977b-b330c35aaaa5}" />
@@ -110,5 +109,4 @@
 	</object>
 	<object class="MixerBusFader" id="{37291267-b7b6-4b50-bca2-5024255161f6}" />
 	<object class="MixerBusFader" id="{c6238726-c2b7-4d4b-a716-13c77b32caf6}" />
-	<object class="SpatialiserEffect" id="{fabe80c9-6bc9-400c-9e2e-8699b342b437}" />
 </objects>

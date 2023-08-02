@@ -51,6 +51,7 @@ MonoBehaviour:
   range: 15
   partToRotate: {fileID: 3620996954284878540}
   firePoint: {fileID: 3308900438056859749}
+  firingSound: event:/laser_sound
   Bullet: {fileID: 6169871951505874626, guid: 4c8350ae4bdce874bafeaae31e617514, type: 3}
   fireRate: 1
   useLaser: 1
