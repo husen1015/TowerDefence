@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,11 @@ public class MainMenu : MonoBehaviour
 {
     private string firstLevel = "LevelSelect";
     public SceneFader sceneFader;
+    private void Start()
+    {
+        AudioManager.Instance.PlayMainMenuMusic();
+    }
+
     public void Play()
     {
         //SceneManager.LoadScene(firstLevel);
