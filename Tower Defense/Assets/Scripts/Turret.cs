@@ -61,9 +61,10 @@ public class Turret : MonoBehaviour
             if(useLaser && currTarget != null)
             {
                 currEnemyScript.ResetSpeed();
+                AudioManager.Instance.StopLaserSound();
             }
+            
             currTarget = null;
-            AudioManager.Instance.StopLaserSound();
         }
     }
 

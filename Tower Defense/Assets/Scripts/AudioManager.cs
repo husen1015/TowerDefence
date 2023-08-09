@@ -72,6 +72,9 @@ public class AudioManager : MonoBehaviour
     public void PlayLaserShot()
     {
         FMOD.RESULT result = laserSound.getPlaybackState(out FMOD.Studio.PLAYBACK_STATE state);
+        Debug.Log(result == FMOD.RESULT.OK && state == FMOD.Studio.PLAYBACK_STATE.PLAYING);
+        Debug.Log($" result = {result }" );
+
         if (result == FMOD.RESULT.OK && state == FMOD.Studio.PLAYBACK_STATE.PLAYING)
         {
             // If the sound is still playing, do not create a new instance and return early

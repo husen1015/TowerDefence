@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
         Vector3 dir = currTarget.position - this.transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
 
-        if(Vector3.Distance(transform.position, currTarget.position) <= 0.2f)
+        if (Vector3.Distance(transform.position, currTarget.position) <= 0.2f)
         {
             GetNextWaypoint();
         }
@@ -61,6 +61,11 @@ public class Enemy : MonoBehaviour
     }
     public void takeDamage(float amount)
     {
+        
+            
+        //StartCoroutine(increaseVelocityStandard());
+            
+        
         currHealth -= amount;
         healthBar.fillAmount = currHealth / StartingHealth;
         //destroy enemy and reward money
@@ -72,7 +77,10 @@ public class Enemy : MonoBehaviour
             Destroy(effect, 3f);
 
             gameManager.incrementBalance(worth);
+            return;
         }
+        
+        //StartCoroutine(decreaseVelocity());
     }
     public void ResetSpeed()
     {
@@ -92,11 +100,11 @@ public class Enemy : MonoBehaviour
             velocity = animator.GetFloat("Velocity");
             if (velocity < 1)
             {
-                StartCoroutine(increaseVelocity());
+                StartCoroutine(increaseVelocityLaser());
             }
         }
     }
-    private IEnumerator increaseVelocity()
+    private IEnumerator increaseVelocityLaser()
     {
         while (velocity < 1 && isSlowing)
         {
@@ -105,15 +113,27 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
     }
+    //private IEnumerator increaseVelocityStandard()
+    //{
+    //    while (velocity < 0.6)
+    //    {
+    //        velocity += Time.deltaTime * 0.5f;
+    //        animator.SetFloat("Velocity", velocity);
+    //        yield return null;
+    //    }
+    //}
     private IEnumerator decreaseVelocity()
     {
+        //StopCoroutine(increaseVelocityStandard());
+        Debug.Log($"velocity is {velocity}");
         while (velocity > 0)
         {
-            velocity -= Time.deltaTime * 0.5f;
+            velocity -= Time.deltaTime * 0.8f;
             animator.SetFloat("Velocity", velocity);
             yield return null;
         }
     }
+
     private void GetNextWaypoint()
     {
         if (wayPointIndex < waypointsNum - 1) 
@@ -164,11 +184,45 @@ public class Enemy : MonoBehaviour
             isDead = true;
         }
     }
-    //public void setPath(int pathId)
-    //{
-    //    currTarget = Waypoints.waypointsList[pathId][0];
-    //    waypointsNum = Waypoints.waypointsList[pathId].Count;
-    //    this.pathId = pathId;
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Projectile"))
+        {
+            Debug.Log("collided with projectile");
 
+            StartCoroutine(HandleHitAnimation());
+        }
+    }
+    private IEnumerator HandleHitAnimation()
+    {
+        yield return StartCoroutine(IncreaseAndDecreaseVelocity());
+    }
+
+    private IEnumerator IncreaseAndDecreaseVelocity()
+    {
+        float originalVelocity = velocity; // Store the original velocity
+        float targetVelocity = 0.6f; // Target velocity for hit animation
+
+        // Increase velocity to targetVelocity
+        while (velocity < targetVelocity)
+        {
+            velocity += Time.deltaTime * 0.7f;
+            animator.SetFloat("Velocity", velocity);
+            yield return null;
+        }
+
+        velocity = targetVelocity; // Ensure it's exactly targetVelocity
+        animator.SetFloat("Velocity", velocity);
+
+        // Decrease velocity back to originalVelocity
+        while (velocity > 0)
+        {
+            velocity -= Time.deltaTime * 0.9f; // Adjust the decrease rate as needed
+            animator.SetFloat("Velocity", velocity);
+            yield return null;
+        }
+
+        velocity = originalVelocity; // Reset the velocity to the original value
+        animator.SetFloat("Velocity", velocity); // Update the animator
+    }
 }
