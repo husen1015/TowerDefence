@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 2630299354943301086}
   - component: {fileID: 2630299354943301087}
   - component: {fileID: 1175016120}
+  - component: {fileID: 7130012318296071708}
   m_Layer: 0
   m_Name: ToughHumanoidEnemy
   m_TagString: Enemy
@@ -326,6 +327,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &7130012318296071708
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2630299354943301084}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.296669, y: 4.176985, z: 1.1530733}
+  m_Center: {x: -0.22028255, y: 1.831522, z: 0.076536655}
 --- !u!1001 &2630299354950505545
 PrefabInstance:
   m_ObjectHideFlags: 0

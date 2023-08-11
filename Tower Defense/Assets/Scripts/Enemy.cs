@@ -186,6 +186,8 @@ public class Enemy : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("hit");
+        Debug.Log("hit");
         if (other.CompareTag("Projectile"))
         {
             Debug.Log("collided with projectile");
