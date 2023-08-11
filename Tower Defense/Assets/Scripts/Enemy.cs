@@ -200,29 +200,25 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator IncreaseAndDecreaseVelocity()
     {
-        float originalVelocity = velocity; // Store the original velocity
-        float targetVelocity = 0.6f; // Target velocity for hit animation
 
         // Increase velocity to targetVelocity
-        while (velocity < targetVelocity)
+        while (velocity < 0.6f)
         {
             velocity += Time.deltaTime * 0.7f;
             animator.SetFloat("Velocity", velocity);
             yield return null;
         }
 
-        velocity = targetVelocity; // Ensure it's exactly targetVelocity
         animator.SetFloat("Velocity", velocity);
 
         // Decrease velocity back to originalVelocity
         while (velocity > 0)
         {
-            velocity -= Time.deltaTime * 0.9f; // Adjust the decrease rate as needed
+            velocity -= Time.deltaTime * 1f; // Adjust the decrease rate as needed
             animator.SetFloat("Velocity", velocity);
             yield return null;
         }
 
-        velocity = originalVelocity; // Reset the velocity to the original value
         animator.SetFloat("Velocity", velocity); // Update the animator
     }
 }

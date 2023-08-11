@@ -141,6 +141,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4565524509241415413}
   - component: {fileID: 5532598813123568182}
+  - component: {fileID: 211625267322832047}
+  - component: {fileID: 3712659249131559115}
   m_Layer: 0
   m_Name: UpgradedMIssile
   m_TagString: Projectile
@@ -180,6 +182,35 @@ MonoBehaviour:
   speed: 26
   impactEffect: {fileID: 7629056932682362046, guid: 5d37f3ad1b337454483add32016abaaa, type: 3}
   damage: 5
+--- !u!65 &211625267322832047
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4634993446163235835}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0046189134, y: 0.0051289415, z: 0.012512579}
+  m_Center: {x: 0.00029498903, y: -0.00008270502, z: 0.0029014563}
+--- !u!54 &3712659249131559115
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4634993446163235835}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6328564342811248699
 GameObject:
   m_ObjectHideFlags: 0

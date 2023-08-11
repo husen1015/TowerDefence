@@ -5362,6 +5362,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StandardHumanoidEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2724471010214309143, guid: 818a752c3e079b24f957018764af499f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 818a752c3e079b24f957018764af499f, type: 3}
 --- !u!1 &511527309
@@ -11913,6 +11917,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StandardTurret (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2252976563206168872, guid: 17733e364e5af2447a62960ef607b3ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7553902113896000383, guid: 17733e364e5af2447a62960ef607b3ed, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -16061,7 +16069,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532242104}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 691202fb00c2a774c9d873407d166f51, type: 3}
   m_Name: 
