@@ -2335,7 +2335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2630299354943301086, guid: 284ffd22869667d46934a483dcf49a58, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2630299354943301086, guid: 284ffd22869667d46934a483dcf49a58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5381,7 +5381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2724471010214309142, guid: 818a752c3e079b24f957018764af499f, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2724471010214309142, guid: 818a752c3e079b24f957018764af499f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5429,7 +5429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2724471010214309143, guid: 818a752c3e079b24f957018764af499f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 818a752c3e079b24f957018764af499f, type: 3}
@@ -11228,6 +11228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FastZombieEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5115429103942706641, guid: a7db565347201a24c92c246b2cea18bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5115429103942706644, guid: a7db565347201a24c92c246b2cea18bb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -12053,7 +12057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7553902113896000383, guid: 17733e364e5af2447a62960ef607b3ed, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7553902113896000383, guid: 17733e364e5af2447a62960ef607b3ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18765,7 +18769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7553902113896000383, guid: 17733e364e5af2447a62960ef607b3ed, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7553902113896000383, guid: 17733e364e5af2447a62960ef607b3ed, type: 3}
       propertyPath: m_LocalPosition.x

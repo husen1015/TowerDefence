@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public float panSpeed = 0.3f;
+    public float panSpeed = 0.5f;
     //private float panBorderThickness = 10;
     private float scrollSpeed = 5f;
     private GameManager gameManager;
@@ -41,7 +41,7 @@ public class CameraController : MonoBehaviour
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             Vector3 pos = transform.position;
             pos.y -= scroll * 1000f * Time.deltaTime * scrollSpeed;
-            pos.y = Mathf.Clamp(pos.y, 35, 70);
+            pos.y = Mathf.Clamp(pos.y, 25, 70);
             transform.position = pos;
         }
     }

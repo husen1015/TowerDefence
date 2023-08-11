@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour
     }
     private IEnumerator increaseVelocityLaser()
     {
-        while (velocity < 1 && isSlowing)
+        while (velocity < 0.6f && isSlowing)
         {
             velocity += Time.deltaTime * 0.01f;
             animator.SetFloat("Velocity", velocity);
@@ -186,12 +186,8 @@ public class Enemy : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("hit");
-        Debug.Log("hit");
         if (other.CompareTag("Projectile"))
         {
-            Debug.Log("collided with projectile");
-
             StartCoroutine(HandleHitAnimation());
         }
     }
@@ -202,7 +198,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator IncreaseAndDecreaseVelocity()
     {
-
+        
         // Increase velocity to targetVelocity
         while (velocity < 0.6f)
         {
@@ -220,7 +216,6 @@ public class Enemy : MonoBehaviour
             animator.SetFloat("Velocity", velocity);
             yield return null;
         }
-
         animator.SetFloat("Velocity", velocity); // Update the animator
     }
 }
