@@ -8,6 +8,9 @@ public class CameraController : MonoBehaviour
     //private float panBorderThickness = 10;
     private float scrollSpeed = 5f;
     private GameManager gameManager;
+
+  
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +22,9 @@ public class CameraController : MonoBehaviour
     {
         if (!gameManager.GameOver)
         {
-            if (Input.GetKey("w") && transform.position.z <= 35/*|| Input.mousePosition.y >= Screen.height - panBorderThickness*/)
+            if ( Input.GetKey("w") && transform.position.z <= 35/*|| Input.mousePosition.y >= Screen.height - panBorderThickness*/)
             {
+
                 transform.Translate(Vector3.forward * panSpeed * panSpeed, Space.World);
             }
             if (Input.GetKey("s") && transform.position.z >= -35/*|| Input.mousePosition.y <= panBorderThickness*/)

@@ -36,7 +36,10 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        AudioManager.Instance.PlayLvlMusic();
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayLvlMusic();
+        }
         livesLeft = startingLives;
         buildManager = BuildManager.Instance;
         Balance = startBalance;
